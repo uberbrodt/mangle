@@ -1,11 +1,24 @@
 defmodule Mangle do
 
+  def blank?(s) when is_nil(s) do
+    false
+  end
+
+  def blank?(s) when is_binary(s) do
+    s
+    |> String.trim()
+    |> case do
+      "" -> false
+      _ -> true
+    end
+  end
+
   def lowercase_and_atomize(orig) when is_nil(orig) do
     nil
   end
 
   def lowercase_and_atomize(orig) when is_binary(orig) do
-    case String.valid?(orig) do 
+    case String.valid?(orig) do
       true -> do_lowercase_and_atomize(orig)
       false -> orig
     end
@@ -33,5 +46,4 @@ defmodule Mangle do
       false -> orig
     end
   end
-
 end
