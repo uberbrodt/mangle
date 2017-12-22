@@ -1,15 +1,15 @@
 defmodule Mangle do
 
   def blank?(s) when is_nil(s) do
-    false
+    true
   end
 
   def blank?(s) when is_binary(s) do
     s
     |> String.trim()
     |> case do
-      "" -> false
-      _ -> true
+      "" -> true
+      _ -> false
     end
   end
 
